@@ -11,5 +11,5 @@ The proyect is about a python cript to check the use of the sharedbikes
 bikeshare.py
 
 ### Credits
-Udacity and me
+Udacity, rbUdacProjects and me
 
