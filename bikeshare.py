@@ -250,9 +250,11 @@ def displays_raw(df):
         
     return
             
+
 def cleanuser(answer):
     """Clean up the answer of the user"""            
     if answer.lower() == "yes" or answer.lower() == "y" or answer.lower() == "si" :
+
         return True
     elif answer.lower() == "no" or answer.lower() == "n":
         return False
