@@ -7,6 +7,12 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 PossibleMonth = ['all', 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+
+spaceshort = ' '*16
+
+lineslong = '-'*40
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -52,7 +58,7 @@ def get_filters():
             print (day + " Is not an abaliable day")
             day =  None
     
-    print('-'*40)
+    print(lineslong)
     return city, month, day
 
 
@@ -104,18 +110,18 @@ def time_stats(df):
     print('Most Populars...')
     # TO DO: display the most common month
     popular_month = PossibleMonth[df['month'].mode()[0]]
-    print(' '*16, 'Month:', popular_month.title())
+    print(spaceshort , 'Month:', popular_month.title())
 
     # TO DO: display the most common day of week
     popular_dayofweek = df['day_of_week'].mode()[0]
-    print(' '*16, 'Day of Week:', popular_dayofweek)
+    print(spaceshort , 'Day of Week:', popular_dayofweek)
 
     # TO DO: display the most common start hour
     popular_start_hour = df['hour'].mode()[0]
-    print(' '*16, 'Start Hour:', popular_start_hour)
+    print(spaceshort , 'Start Hour:', popular_start_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print(lineslong)
 
 
 def station_stats(df):
@@ -126,19 +132,19 @@ def station_stats(df):
     print('Most Commons...')
     # TO DO: display most commonly used start station
     popular_start_station = df['Start Station'].mode()[0]
-    print(' '*16, 'Start Station:', popular_start_station)
+    print(spaceshort , 'Start Station:', popular_start_station)
 
     # TO DO: display most commonly used end station
     popular_end_station = df['End Station'].mode()[0]
-    print(' '*16, 'End Station:', popular_end_station)
+    print(spaceshort , 'End Station:', popular_end_station)
 
     # TO DO: display most frequent combination of start station and end station trip
     #output = df.groupby(['column1','column2']).count().sort_values(by=['column1','column2'], axis = 0)[0]
     popular_combo = df['combination'].mode()[0]
-    print(' '*16, 'Combination:', popular_combo)
+    print(spaceshort , 'Combination:', popular_combo)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print(lineslong)
 
 
 def trip_duration_stats(df):
@@ -149,14 +155,14 @@ def trip_duration_stats(df):
 
     # TO DO: display total travel time
     total_travel_time = df['Trip Duration'].sum()
-    print(' '*16, 'Total travel time:', total_travel_time, " minutes")
+    print(spaceshort , 'Total travel time:', total_travel_time, " minutes")
 
     # TO DO: display mean travel time
     mean_travel_time = round(df['Trip Duration'].mean(), 0)
-    print(' '*16, 'Mean travel time:', mean_travel_time, " minutes")
+    print(spaceshort , 'Mean travel time:', mean_travel_time, " minutes")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print(lineslong)
 
 
 def user_stats(df):
@@ -169,43 +175,43 @@ def user_stats(df):
     try:
         user_types =  df.groupby(['User Type']).size()
     except:
-        print (' '*16, "There was no 'User Type' data ")
+        print (spaceshort , "There was no 'User Type' data ")
         print("\nThis took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        print(lineslong)
         return
     #print (user_types)
     for index, value in user_types.items():
-        print (' '*16, "There was {} people for the user type '{}'".format(value,index ))
+        print (spaceshort , "There was {} people for the user type '{}'".format(value,index ))
 
     # TO DO: Display counts of gender
     try:
         user_gender =  df.groupby(['Gender']).size()
     except:
-        print (' '*16, "There was no 'Gender' data ")
+        print (spaceshort , "There was no 'Gender' data ")
         print("\nThis took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        print(lineslong)
         return
     
     for index, value in user_gender.items():
         print (index, value)
-        print (' '*16, "There was {} {}".format(value,index))
+        print (spaceshort , "There was {} {}".format(value,index))
     # TO DO: Display earliest, most recent, and most common year of birth
     
     try:
         Birth_Year =  df['Birth Year']
         print ("About year of birth...")
-        print (' '*16, "Earliest year of birth: {}".format(int(Birth_Year.min())))      
-        print (' '*16, "Most recent year of birth: {}".format(int(Birth_Year.max())))
-        print (' '*16, "Most common year of birth: {}".format(int(Birth_Year.mode()[0])))
+        print (spaceshort , "Earliest year of birth: {}".format(int(Birth_Year.min())))      
+        print (spaceshort , "Most recent year of birth: {}".format(int(Birth_Year.max())))
+        print (spaceshort , "Most common year of birth: {}".format(int(Birth_Year.mode()[0])))
     except:
-        print (' '*16, "There was no 'Birth Year' data ")
+        print (spaceshort , "There was no 'Birth Year' data ")
         print("\nThis took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        print(lineslong)
         return
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print(lineslong)
 
 
 def displays_raw(df):
