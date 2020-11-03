@@ -2,10 +2,11 @@ import time
 import pandas as pd
 import numpy as np
 
+#Place the dictionary with the list of cities
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
-PossibleMonth = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
+PossibleMonth = ['all', 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -243,7 +244,8 @@ def displays_raw(df):
         
     return
             
-def cleanuser(answer):            
+def cleanuser(answer):
+    """Clean up the answer of the user"""            
     if answer.lower() == "yes" or answer.lower() == "y":
         return True
     elif answer.lower() == "no" or answer.lower() == "n":
